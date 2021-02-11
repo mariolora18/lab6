@@ -33,6 +33,6 @@ function addProjectDetails(e) {
 }
 
 function callBackFn(result){
-	$('#project'+ result.id + " .details").html(result.summary);
+	$('#project'+ result.id + " .details").html(result['summary']);
 
 }
