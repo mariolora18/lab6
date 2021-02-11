@@ -14,6 +14,7 @@ function initializePage() {
 	// $('#colorBtn').click(randomizeColors);
 }
 
+
 /*
  * Make an AJAX call to retrieve project details and add it in
  */
@@ -21,10 +22,17 @@ function addProjectDetails(e) {
 	// Prevent following the link
 	e.preventDefault();
 
+
 	// Get the div ID, e.g., "project3"
 	var projectID = $(this).closest('.project').attr('id');
 	// get rid of 'project' from the front of the id 'project3'
 	var idNumber = projectID.substr('project'.length);
 
 	console.log("User clicked on project " + idNumber);
+	$.get("http://localhost:3000/project/" + idNumber , callBackFn);
+}
+
+function callBackFn(result){
+	$('#project'+ result.id + " .details").html(result.summary);
+
 }
